@@ -1,0 +1,21 @@
+{
+  "name": "polyclinic_app",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "moment": "^2.19.2",
+    "morgan": "^1.9.0",
+    "express": "^4.15.2",
+    "express-handlebars": "^3.0.0",
+    "bluebird": "^3.5.0",
+    "knex": "^0.13.0",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.8.0",
+    "eslint-config-airbnb-base": "^12.0.2",
+    "eslint-plugin-import": "^2.7.0"
+  }
+}

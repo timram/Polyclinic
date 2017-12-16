@@ -1,8 +1,8 @@
 const express = require('express');
-const ping = require('./ping');
+const { Department } = require('../controllers');
 
 const router = new express.Router();
 
-router.use('/ping', ping);
+router.get('/', Department.getAllDepartments);
 
 module.exports = router;

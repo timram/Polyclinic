@@ -1,15 +1,9 @@
 const express = require('express');
-const routes = require('./routes');
+const routes = require('./api/routes');
 const bodyParser = require('body-parser');
-const { RequestLogger } = require('./helpers');
+const { RequestLogger } = require('./api/helpers');
 
 const app = express();
-
-app.use((req, res, next) => {
-  console.log('TEST');
-
-  next();
-});
 
 app.use(bodyParser.json());
 

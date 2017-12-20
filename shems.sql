@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS department;
 
 DROP TABLE IF EXISTS patient;
 
-DROP TABLE IF EXISTS account;
+DROP TABLE IF EXISTS account;   
 
 
 CREATE TABLE account(
@@ -50,7 +50,7 @@ CREATE TABLE doctor (
 
 CREATE TABLE patient (
     account_id integer,
-    passport integer unique NOT NULL,
+    passport varchar(128) unique NOT NULL,
     CONSTRAINT patient_pk PRIMARY KEY (account_id),
     CONSTRAINT patient_account_fk FOREIGN KEY (account_id) REFERENCES account(id)
 ) WITH (

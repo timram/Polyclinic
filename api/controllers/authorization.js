@@ -8,7 +8,7 @@ async function registerPatient(req, res) {
 
     const token = await AuthService.registerPatient(patient);
 
-    return res.json({ token });
+    return res.json(token);
   } catch (err) {
     return ErrorHandler.genericError(res, err);
   }
@@ -19,9 +19,9 @@ async function registerDoctor(req, res) {
     const doctor = req.body;
     doctor.role = 'doctor';
 
-    const token = AuthService.registerPatient(doctor);
+    const token = await AuthService.registerDoctor(doctor);
 
-    return res.json({ token });
+    return res.json(token);
   } catch (err) {
     return ErrorHandler.genericError(res, err);
   }
@@ -31,9 +31,9 @@ async function loginPatient(req, res) {
   try {
     const { email, password } = req.body;
 
-    const token = AuthService.loginPatient({ email, password });
+    const token = await AuthService.loginPatient({ email, password });
 
-    return res.json({ token });
+    return res.json(token);
   } catch (err) {
     return ErrorHandler.genericError(res, err);
   }
@@ -43,9 +43,9 @@ async function loginDoctor(req, res) {
   try {
     const { email, password } = req.body;
 
-    const token = AuthService.loginDoctor({ email, password });
+    const token = await AuthService.loginDoctor({ email, password });
 
-    return res.json({ token });
+    return res.json(token);
   } catch (err) {
     return ErrorHandler.genericError(res, err);
   }

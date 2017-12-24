@@ -16,7 +16,18 @@ function genericError(res, err) {
   });
 }
 
+function notAuthorizedAccess(res) {
+  console.log('not authorized access');
+
+  return res.status(400).json({
+    error: {
+      message: 'Not authorized access'
+    }
+  });
+}
+
 module.exports = {
-  genericError
+  genericError,
+  notAuthorizedAccess
 };
 

@@ -1,5 +1,5 @@
 const knex = require('../knex');
-const { checkSchedule } = require('../helpers');
+const { CheckSchedule } = require('../helpers');
 
 function throwAccountNotExists() {
   const error = new Error('account with such ID does not extists');
@@ -116,7 +116,7 @@ async function updatePatient(patient) {
 
 async function updateDoctor(doctor) {
   await knex.transaction(async (trx) => {
-    checkSchedule(doctor.schedule);
+    CheckSchedule.checkNewSchedule(doctor.schedule);
 
     await updateAccount({ account: doctor, trx });
 

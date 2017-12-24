@@ -1,18 +1,12 @@
 const { AccountService } = require('../services');
 const { ErrorHandler } = require('../helpers');
 
-function throwNotAuthorizedError() {
-  const error = new Error('Not authorized access');
-  error.status = 400;
-  throw error;
-}
-
 async function getAllPatients(req, res) {
   try {
     console.log(req.account);
 
     if (req.account.role !== 'doctor') {
-      throwNotAuthorizedError();
+      return ErrorHandler.notAuthorizedAccess(res);
     }
 
     const patients = await AccountService.getAllPatients();
@@ -38,7 +32,7 @@ async function getPatient(req, res) {
     const accountID = parseFloat(req.params.accountID);
 
     if (accountID !== req.account.id && req.account.role !== 'doctor') {
-      throwNotAuthorizedError();
+      return ErrorHandler.notAuthorizedAccess(res);
     }
 
     const patient = await AccountService.getPatient(accountID);
@@ -66,7 +60,7 @@ async function updatePatient(req, res) {
     const accountID = parseFloat(req.params.accountID);
     console.log(accountID, req.account.idw);
     if (accountID !== req.account.id) {
-      throwNotAuthorizedError();
+      return ErrorHandler.notAuthorizedAccess(res);
     }
 
     const patient = req.body;
@@ -85,7 +79,7 @@ async function updateDoctor(req, res) {
     const accountID = parseFloat(req.params.accountID);
 
     if (accountID !== req.account.id) {
-      throwNotAuthorizedError();
+      return ErrorHandler.notAuthorizedAccess(res);
     }
 
     const doctor = req.body;

@@ -1,6 +1,6 @@
-const validDays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+const validDays = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 
-module.exports = (schedule) => {
+function checkNewSchedule(schedule) {
   try {
     const days = Object.keys(schedule);
     const intersection = validDays.filter(day => days.includes(day));
@@ -38,4 +38,24 @@ module.exports = (schedule) => {
     error.status = 400;
     throw error;
   }
+}
+
+function isValidRecordTime({ time, schedule }) {
+  const day = schedule[validDays[time.getDay()]];
+
+  if (day === 'off') {
+    return false;
+  }
+
+  const startTime = parseFloat(day.start.replace(':', '.'));
+  const endTime = parseFloat(day.end.replace(':', '.'));
+  const targetTime = parseFloat(`${time.getHours()}.${time.getMinutes()}`);
+
+  return targetTime >= startTime && targetTime <= endTime;
+}
+
+
+module.exports = {
+  checkNewSchedule,
+  isValidRecordTime
 };

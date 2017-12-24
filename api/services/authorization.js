@@ -1,5 +1,5 @@
 const knex = require('../knex');
-const { JWT, checkSchedule } = require('../helpers');
+const { JWT, CheckSchedule } = require('../helpers');
 
 async function createAndReturnAccountID(account, trx) {
   try {
@@ -52,7 +52,7 @@ async function registerPatient(patient) {
 
 async function registerDoctor(doctor) {
   const doctorID = await knex.transaction(async (trx) => {
-    checkSchedule(doctor.schedule);
+    CheckSchedule.checkNewSchedule(doctor.schedule);
 
     const accountID = await createAndReturnAccountID(doctor, trx);
 
@@ -83,8 +83,6 @@ async function loginPatient({ email, password }) {
   if (!account) {
     throwNotValidCredentials();
   }
-
-  console.log(account);
 
   return {
     token: JWT.generate({ id: account.id }),

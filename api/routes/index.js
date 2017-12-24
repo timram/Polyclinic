@@ -3,6 +3,8 @@ const ping = require('./ping');
 const auth = require('./authorization');
 const department = require('./department');
 const account = require('./account');
+const appointment = require('./appointment');
+const analysis = require('./analysis');
 const { Authorization: authHelper } = require('../helpers');
 
 const router = new express.Router();
@@ -12,5 +14,7 @@ router.use('/auth', auth);
 router.use(authHelper);
 router.use('/department', department);
 router.use('/account', account);
+router.use('/appointment', appointment);
+router.use('/analysis', analysis);
 
 module.exports = router;

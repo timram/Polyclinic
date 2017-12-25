@@ -91,7 +91,6 @@ CREATE TABLE disease_history (
     id serial,
     name varchar(128),
     description json NOT NULL,
-    start_date timestamp NOT NULL,
     patient_id integer NOT NULL, 
     CONSTRAINT disease_history_pk PRIMARY KEY (id),
     CONSTRAINT disease_history_patient_fk FOREIGN KEY (patient_id) REFERENCES patient (account_id)

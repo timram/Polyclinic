@@ -46,7 +46,8 @@ async function registerPatient(patient) {
 
   return {
     token: JWT.generate({ id: patientID }),
-    id: patientID
+    id: patientID,
+    role: 'patient'
   };
 }
 
@@ -68,7 +69,8 @@ async function registerDoctor(doctor) {
 
   return {
     token: JWT.generate({ id: doctorID }),
-    id: doctorID
+    id: doctorID,
+    role: 'doctor'
   };
 }
 
@@ -86,7 +88,8 @@ async function loginPatient({ email, password }) {
 
   return {
     token: JWT.generate({ id: account.id }),
-    id: account.id
+    id: account.id,
+    role: 'patient'
   };
 }
 
@@ -104,7 +107,8 @@ async function loginDoctor({ email, password }) {
 
   return {
     token: JWT.generate({ id: account.id }),
-    id: account.id
+    id: account.id,
+    role: 'doctor'
   };
 }
 

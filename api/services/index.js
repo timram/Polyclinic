@@ -4,6 +4,7 @@ const DepartmentService = require('./department');
 const AccountService = require('./account');
 const AppointmentService = require('./appointment');
 const AnalysisService = require('./analysis');
+const DiseaseHistoryService = require('./disease_history');
 
 module.exports = {
   PingService,
@@ -11,5 +12,6 @@ module.exports = {
   DepartmentService,
   AccountService,
   AppointmentService,
-  AnalysisService
+  AnalysisService,
+  DiseaseHistoryService
 };

@@ -4,6 +4,7 @@ const Department = require('./department');
 const Account = require('./account');
 const Appointment = require('./appointment');
 const Analysis = require('./analysis');
+const DiseaseHistory = require('./disease_history');
 
 module.exports = {
   Ping,
@@ -11,5 +12,6 @@ module.exports = {
   Department,
   Account,
   Appointment,
-  Analysis
+  Analysis,
+  DiseaseHistory
 };

@@ -28,7 +28,7 @@ async function createAndReturnAccountID(account, trx) {
 
 function throwNotValidCredentials() {
   const error = new Error('Wrong email or password');
-  error.status = 400;
+  error.status = 404;
   throw error;
 }
 

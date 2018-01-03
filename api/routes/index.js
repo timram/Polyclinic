@@ -12,8 +12,8 @@ const router = new express.Router();
 
 router.use('/ping', ping);
 router.use('/auth', auth);
-router.use(authHelper);
 router.use('/department', department);
+router.use(authHelper);
 router.use('/account', account);
 router.use('/appointment', appointment);
 router.use('/analysis', analysis);

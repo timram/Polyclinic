@@ -28,6 +28,7 @@ async function getDepartment(departmentID) {
 async function getDoctors(departmentID) {
   return knex('account')
     .select(
+      'account.id',
       'account.fname',
       'account.lname',
       'account.email',

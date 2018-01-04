@@ -3,8 +3,6 @@ const { ErrorHandler } = require('../helpers');
 
 async function getAllPatients(req, res) {
   try {
-    console.log(req.account);
-
     if (req.account.role !== 'doctor') {
       return ErrorHandler.notAuthorizedAccess(res);
     }
@@ -58,7 +56,7 @@ async function getDoctor(req, res) {
 async function updatePatient(req, res) {
   try {
     const accountID = parseFloat(req.params.accountID);
-    console.log(accountID, req.account.idw);
+
     if (accountID !== req.account.id) {
       return ErrorHandler.notAuthorizedAccess(res);
     }

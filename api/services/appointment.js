@@ -17,7 +17,8 @@ async function checkDoctorTime({ doctor, time }) {
   const existsRecordsOnTime = await knex('doctor_appointment')
     .select('id')
     .where('start_date', '<', moment(time).add(doctor.admissionDuration, 'm').toDate())
-    .where('end_date', '>', time);
+    .where('end_date', '>', time)
+    .where('doctor_id', doctor.id);
 
   if (existsRecordsOnTime.length > 0) {
     return false;
@@ -30,6 +31,7 @@ async function record({ patientID, doctorID, startTime }) {
   const [newRecord] = await knex.transaction(async (trx) => {
     const [doctor] = await trx('doctor')
       .select(
+        'account_id as id',
         'admission_duration as admissionDuration',
         'schedule'
       )
